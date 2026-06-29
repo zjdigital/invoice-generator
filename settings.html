@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pengaturan Invoice Generator - Invoice Generator">
+<title>Settings | Invoice Generator</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body class="theme-navy">
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fa fa-file-invoice-dollar"></i></div>
+            <h2>Invoice Gen</h2>
+            <span>AI Invoice Prompt Designer</span>
+        </div>
+        <nav>
+            <a href="index.html" id="nav-dashboard">
+                <i class="fa fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="index.html" id="nav-new">
+                <i class="fa fa-plus-circle"></i>
+                <span>New Invoice</span>
+            </a>
+            <a href="history.html" id="nav-history">
+                <i class="fa fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+            <a href="settings.html" class="active" id="nav-settings">
+                <i class="fa fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <p>Invoice Generator V1</p>
+            <p class="brand-tag">Professional Suite</p>
+        </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main settings-page">
+
+        <div class="topbar">
+            <div class="topbar-left">
+                <h1><i class="fa fa-gear" style="color:var(--primary);font-size:22px;margin-right:10px;"></i>Settings</h1>
+                <p class="topbar-sub">Konfigurasi data default perusahaan dan rekening bank</p>
+            </div>
+            <div class="btn-row" style="margin:0;">
+                <button onclick="window.location.href='index.html'" class="btn-primary">
+                    <i class="fa fa-arrow-left"></i> Dashboard
+                </button>
+                <button onclick="saveSettings()" class="btn-generate">
+                    <i class="fa fa-floppy-disk"></i> Simpan Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- NOTIFICATION -->
+        <div id="saveNotif" style="display:none;background:#dcfce7;border:1px solid #86efac;color:#15803d;padding:14px 20px;border-radius:12px;font-weight:600;text-align:center;margin-bottom:20px;font-size:14px;">
+            <i class="fa fa-check-circle" style="margin-right:8px;"></i>Settings berhasil disimpan secara permanen!
+        </div>
+
+        <!-- PROFIL PERUSAHAAN -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-building"></i>
+                <h3>Default Profil Toko / Perusahaan</h3>
+            </div>
+            <div class="form-grid-2">
+                <div class="input-group">
+                    <label>Nama Toko/Perusahaan</label>
+                    <input id="companyName" type="text" value="Toko Serba Ada" placeholder="Nama Perusahaan">
+                </div>
+                <div class="input-group">
+                    <label>Website</label>
+                    <input id="website" type="text" value="www.tokoserbaada.com" placeholder="Website">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input id="email" type="email" value="sales@tokoserbaada.com" placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <label>Nomor WhatsApp</label>
+                    <input id="phone" type="text" value="0812-9876-5432" placeholder="No. WhatsApp">
+                </div>
+            </div>
+            <div class="input-group" style="margin-top:12px;">
+                <label>Alamat Lengkap</label>
+                <textarea id="companyAddress" rows="3" placeholder="Alamat Lengkap">Jl. Niaga Utama No. 45 Jakarta Pusat</textarea>
+            </div>
+        </div>
+
+        <!-- DEFAULT PAYMENT / TRANSFER -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-credit-card"></i>
+                <h3>Default Rekening Bank Transfer</h3>
+            </div>
+            <h2 style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--text);">Rekening 1</h2>
+            <div class="form-grid-2" style="border-bottom: 1px dashed var(--border); padding-bottom: 14px; margin-bottom: 14px;">
+                <div class="input-group">
+                    <label>Nama Bank 1</label>
+                    <input id="bankName1" type="text" value="BCA" placeholder="BCA/Mandiri/dsb">
+                </div>
+                <div class="input-group">
+                    <label>Nomor Rekening 1</label>
+                    <input id="bankAccount1" type="text" value="1234567890" placeholder="No. Rekening">
+                </div>
+                <div class="input-group" style="grid-column: span 2;">
+                    <label>Nama Pemilik Rekening 1</label>
+                    <input id="bankHolder1" type="text" value="Toko Serba Ada" placeholder="Atas Nama">
+                </div>
+            </div>
+
+            <h2 style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--text);">Rekening 2</h2>
+            <div class="form-grid-2">
+                <div class="input-group">
+                    <label>Nama Bank 2</label>
+                    <input id="bankName2" type="text" value="Mandiri" placeholder="BCA/Mandiri/dsb">
+                </div>
+                <div class="input-group">
+                    <label>Nomor Rekening 2</label>
+                    <input id="bankAccount2" type="text" value="9876543210" placeholder="No. Rekening">
+                </div>
+                <div class="input-group" style="grid-column: span 2;">
+                    <label>Nama Pemilik Rekening 2</label>
+                    <input id="bankHolder2" type="text" value="Toko Serba Ada" placeholder="Atas Nama">
+                </div>
+            </div>
+        </div>
+
+        <!-- APP TINT/THEME -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-paint-roller"></i>
+                <h3>Default Tema Warna Aplikasi</h3>
+            </div>
+            <div class="input-group">
+                <label>Pilih Skema Warna Bawaan</label>
+                <select id="defaultTheme">
+                    <option value="navy">Classic Navy (Biru)</option>
+                    <option value="emerald">Emerald Green (Hijau)</option>
+                    <option value="crimson">Crimson Red (Merah)</option>
+                    <option value="sunset">Sunset Orange (Jingga)</option>
+                    <option value="purple">Royal Purple (Ungu)</option>
+                </select>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+function saveSettings() {
+    const settings = {
+        companyName:    document.getElementById("companyName").value,
+        website:        document.getElementById("website").value,
+        email:          document.getElementById("email").value,
+        phone:          document.getElementById("phone").value,
+        companyAddress: document.getElementById("companyAddress").value,
+        bankName1:      document.getElementById("bankName1").value,
+        bankAccount1:   document.getElementById("bankAccount1").value,
+        bankHolder1:    document.getElementById("bankHolder1").value,
+        bankName2:      document.getElementById("bankName2").value,
+        bankAccount2:   document.getElementById("bankAccount2").value,
+        bankHolder2:    document.getElementById("bankHolder2").value,
+        colorTheme:     document.getElementById("defaultTheme").value
+    };
+
+    localStorage.setItem("generalInvoiceSettings", JSON.stringify(settings));
+    
+    // Apply theme changes to current window
+    document.body.className = `theme-${settings.colorTheme}`;
+
+    const notif = document.getElementById("saveNotif");
+    notif.style.display = "block";
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    setTimeout(() => {
+        notif.style.display = "none";
+    }, 3000);
+}
+
+function loadSettings() {
+    const settings = JSON.parse(localStorage.getItem("generalInvoiceSettings") || "{}");
+    if (!settings.companyName) return;
+
+    document.getElementById("companyName").value = settings.companyName;
+    document.getElementById("website").value = settings.website || "";
+    document.getElementById("email").value = settings.email || "";
+    document.getElementById("phone").value = settings.phone || "";
+    document.getElementById("companyAddress").value = settings.companyAddress || "";
+    document.getElementById("bankName1").value = settings.bankName1 || "";
+    document.getElementById("bankAccount1").value = settings.bankAccount1 || "";
+    document.getElementById("bankHolder1").value = settings.bankHolder1 || "";
+    document.getElementById("bankName2").value = settings.bankName2 || "";
+    document.getElementById("bankAccount2").value = settings.bankAccount2 || "";
+    document.getElementById("bankHolder2").value = settings.bankHolder2 || "";
+    document.getElementById("defaultTheme").value = settings.colorTheme || "navy";
+    
+    // Apply theme
+    document.body.className = `theme-${settings.colorTheme || "navy"}`;
+}
+
+loadSettings();
+</script>
+
+</body>
+</html>

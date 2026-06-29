@@ -1,0 +1,186 @@
+/* ========================================
+   MOBILE.CSS
+   Responsive Design
+   ======================================== */
+
+/* LARGE TABLET — Stack columns */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .cost-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .right-column {
+        position: relative;
+        top: auto;
+    }
+    .preview-card textarea {
+        height: 350px;
+    }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    :root {
+        --sidebar-width: 220px;
+    }
+    .main {
+        padding: 20px;
+    }
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .btn-generate {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* MOBILE — Hide sidebar, show topnav */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 16px 18px;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        gap: 10px;
+        flex: 1;
+    }
+
+    .logo-icon {
+        margin-bottom: 0;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        flex: unset;
+        width: 100%;
+    }
+
+    .sidebar nav a {
+        flex: 1;
+        min-width: 100px;
+        justify-content: center;
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .sidebar nav a::before {
+        display: none;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .app {
+        flex-direction: column;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cost-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .summary-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .summary-box h2 {
+        font-size: 22px;
+    }
+
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 18px;
+    }
+
+    .topbar-left h1 {
+        font-size: 20px;
+    }
+
+    .btn-generate {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* SMARTPHONE */
+@media (max-width: 520px) {
+    .cost-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-add, .btn-primary, .btn-success {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .preview-card textarea {
+        height: 280px;
+        font-size: 11px;
+    }
+
+    .summary-box h2 {
+        font-size: 20px;
+    }
+
+    .invoice-table th,
+    .invoice-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Invoice Generator - Buat invoice dengan tema khusus dalam hitungan detik.">
+<title>Invoice Generator | Pembuat Invoice AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body class="theme-navy">
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fa fa-file-invoice-dollar"></i></div>
+            <h2>Invoice Gen</h2>
+            <span>AI Invoice Prompt Designer</span>
+        </div>
+
+        <nav>
+            <a href="index.html" class="active" id="nav-dashboard">
+                <i class="fa fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="index.html" id="nav-new">
+                <i class="fa fa-plus-circle"></i>
+                <span>New Invoice</span>
+            </a>
+            <a href="history.html" id="nav-history">
+                <i class="fa fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+            <a href="settings.html" id="nav-settings">
+                <i class="fa fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Invoice Generator V1</p>
+            <p class="brand-tag">Professional Suite</p>
+        </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main">
+
+        <div class="topbar">
+            <div class="topbar-left">
+                <h1><i class="fa fa-wand-magic-sparkles" style="color:var(--primary);font-size:24px;margin-right:10px;"></i>Invoice Prompt Generator</h1>
+                <p class="topbar-sub">Buat prompt invoice untuk berbagai jenis bisnis dengan tema warna khusus</p>
+            </div>
+            <button id="generateBtn" class="btn-generate">
+                <i class="fa fa-wand-magic-sparkles"></i>
+                Generate Prompt
+            </button>
+        </div>
+
+        <!-- GRID -->
+        <div class="dashboard-grid">
+
+            <!-- KIRI -->
+            <div class="left-column">
+
+                <!-- TEMA & WARNA INVOICE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-palette"></i>
+                        <h3>Tema & Warna Invoice</h3>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="input-group">
+                            <label>Tema Invoice (Kategori)</label>
+                            <select id="invoiceTheme">
+                                <option value="Umum">📦 Umum (General)</option>
+                                <option value="Kuliner">🍔 Kuliner (Makanan/Minuman)</option>
+                                <option value="Fashion">👕 Fashion (Pakaian/Aksesoris)</option>
+                                <option value="Elektronik">⚡ Elektronik (Gawai/Komputer)</option>
+                                <option value="Otomotif">🚗 Otomotif (Kendaraan/Suku Cadang)</option>
+                                <option value="Jasa">🛠️ Jasa (Layanan/Konsultasi)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Pilihan Warna Utama</label>
+                            <div class="color-picker-grid">
+                                <div class="color-option navy active" data-color="navy" title="Classic Navy"></div>
+                                <div class="color-option emerald" data-color="emerald" title="Emerald Green"></div>
+                                <div class="color-option crimson" data-color="crimson" title="Crimson Red"></div>
+                                <div class="color-option sunset" data-color="sunset" title="Sunset Orange"></div>
+                                <div class="color-option purple" data-color="purple" title="Royal Purple"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA PERUSAHAAN -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-building"></i>
+                        <h3>Data Perusahaan (Penjual)</h3>
+                    </div>
+                    <div class="form-grid-2">
+                        <input id="companyName" type="text" placeholder="Nama Toko/Perusahaan" value="Toko Serba Ada">
+                        <input id="website" type="text" placeholder="Website (Opsional)" value="www.tokoserbaada.com">
+                        <input id="email" type="email" placeholder="Email Kontak" value="sales@tokoserbaada.com">
+                        <input id="phone" type="text" placeholder="No. WhatsApp" value="0812-9876-5432">
+                    </div>
+                    <textarea id="address" rows="3" placeholder="Alamat Lengkap Perusahaan" style="margin-top: 12px;">Jl. Niaga Utama No. 45 Jakarta Pusat</textarea>
+                </div>
+
+                <!-- INVOICE INFO -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-receipt"></i>
+                        <h3>Informasi Invoice</h3>
+                    </div>
+                    <div class="form-grid-2">
+                        <input id="invoiceNumber" placeholder="Nomor Invoice (e.g. INV/2026/001)">
+                        <select id="paymentStatus">
+                            <option value="LUNAS">✅ LUNAS</option>
+                            <option value="BELUM LUNAS">❌ BELUM LUNAS</option>
+                            <option value="DP">⏳ DP / Uang Muka</option>
+                        </select>
+                        <div class="input-group">
+                            <label>Tanggal Invoice</label>
+                            <input id="invoiceDate" type="date">
+                        </div>
+                        <div class="input-group">
+                            <label>Jatuh Tempo</label>
+                            <input id="dueDate" type="date">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA PEMBELI -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-user"></i>
+                        <h3>Data Pelanggan (Pembeli)</h3>
+                    </div>
+                    <div class="form-grid-2">
+                        <input id="customerName" placeholder="Nama Pelanggan">
+                        <input id="customerPhone" placeholder="No. HP / WhatsApp">
+                        <input id="customerEmail" placeholder="Email Pelanggan" type="email">
+                    </div>
+                    <textarea id="customerAddress" rows="3" placeholder="Alamat Lengkap Pelanggan" style="margin-top: 12px;"></textarea>
+                </div>
+
+                <!-- REKENING TRANSFER -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-credit-card"></i>
+                        <h3>Rekening Pembayaran</h3>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Masukkan 1 atau 2 rekening bank untuk pilihan transfer pembeli:</p>
+                    <div class="form-grid-2" style="border-bottom: 1px dashed var(--border); padding-bottom: 12px; margin-bottom: 12px;">
+                        <input id="bankName1" placeholder="Nama Bank 1 (e.g. BCA)" value="BCA">
+                        <input id="bankAccount1" placeholder="Nomor Rekening 1" value="1234567890">
+                        <input id="bankHolder1" placeholder="Nama Pemilik Rekening 1" value="Toko Serba Ada" style="grid-column: span 2;">
+                    </div>
+                    <div class="form-grid-2">
+                        <input id="bankName2" placeholder="Nama Bank 2 (e.g. Mandiri)" value="Mandiri">
+                        <input id="bankAccount2" placeholder="Nomor Rekening 2" value="9876543210">
+                        <input id="bankHolder2" placeholder="Nama Pemilik Rekening 2" value="Toko Serba Ada" style="grid-column: span 2;">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- KANAN -->
+            <div class="right-column">
+                <div class="card preview-card">
+                    <div class="card-header">
+                        <i class="fa fa-terminal"></i>
+                        <h3>Live Prompt Preview</h3>
+                        <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+                    </div>
+                    <textarea id="promptOutput" rows="28" placeholder="Prompt AI akan ter-update otomatis di sini saat form diisi..."></textarea>
+                    <button id="copyBtn" class="btn-success">
+                        <i class="fa fa-copy"></i>
+                        Copy Prompt
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- DAFTAR PRODUK -->
+        <div class="card">
+            <div class="card-header section-title">
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <i class="fa fa-box"></i>
+                    <h3>Daftar Produk / Jasa</h3>
+                </div>
+                <button id="addItemBtn" class="btn-add">
+                    <i class="fa fa-plus"></i> Tambah Item
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Barang / Jasa</th>
+                            <th>Qty</th>
+                            <th>Harga Satuan (Rp)</th>
+                            <th>Subtotal (Rp)</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemTableBody"></tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="3" style="text-align:right;font-weight:700;color:var(--primary);padding:14px 12px;background:#f8faff;">
+                                <i class="fa fa-sigma" style="margin-right:6px;"></i>TOTAL BELANJA
+                            </td>
+                            <td style="font-weight:800;color:var(--primary);font-size:15px;background:#f8faff;padding:14px 12px;" id="totalSewaRow">
+                                Rp 0
+                            </td>
+                            <td style="background:#f8faff;"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- BIAYA AKHIR -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-calculator"></i>
+                <h3>Kalkulasi Pembayaran</h3>
+            </div>
+            <div class="cost-grid">
+                <div class="input-group">
+                    <label><i class="fa fa-percent"></i> Diskon (Rp)</label>
+                    <input id="discount" type="number" placeholder="0" min="0">
+                </div>
+                <div class="input-group">
+                    <label><i class="fa fa-truck"></i> Biaya Kirim (Rp)</label>
+                    <input id="deliveryFee" type="number" placeholder="0" min="0">
+                </div>
+                <div class="input-group">
+                    <label><i class="fa fa-money-bill-wave"></i> DP / Uang Muka (Rp)</label>
+                    <input id="downPayment" type="number" placeholder="0" min="0">
+                </div>
+            </div>
+
+            <div class="summary-formula">
+                <div class="formula-row">
+                    <span><i class="fa fa-sigma"></i> Total Belanja</span>
+                    <span id="totalSewaLabel">Rp 0</span>
+                </div>
+                <div class="formula-row minus">
+                    <span><i class="fa fa-minus"></i> Diskon</span>
+                    <span id="discountLabel">Rp 0</span>
+                </div>
+                <div class="formula-row plus">
+                    <span><i class="fa fa-plus"></i> Biaya Kirim</span>
+                    <span id="deliveryLabel">Rp 0</span>
+                </div>
+                <div class="formula-row minus">
+                    <span><i class="fa fa-minus"></i> DP / Uang Muka</span>
+                    <span id="dpLabel">Rp 0</span>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <div class="summary-label">
+                    <i class="fa fa-receipt"></i>
+                    Total Akhir
+                </div>
+                <h2 id="grandTotal">Total Akhir : Rp 0</h2>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/calculator.js"></script>
+<script src="js/invoice.js"></script>
+<script src="js/prompt-builder.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
