@@ -166,7 +166,10 @@ ${bankSection}
      PENTING: Kolom tanda tangan Pembeli HARUS KOSONG / BLANK (hanya berupa garis kosong untuk tanda tangan manual nanti: "( ________________________ )"). Jangan sekali-kali menggambar coretan tanda tangan palsu di sini.
   2. Kolom ADMIN (tengah) — Tanda tangan admin/penjual.
   3. Kolom STEMPEL PERUSAHAAN (kanan) — Cap resmi logo perusahaan.
+- pastikan gambar logo sama persis dengan yang dilampirkan
 - Footer teks penutup di bagian paling bawah.
+- dilarang menampilkan foto produk jika tidak diminta 
+- foto profuk dibuat jika ada lampiran foto produk
 
 Gaya Artistik:
 - Minimalis modern, photorealistic ultra-detail
