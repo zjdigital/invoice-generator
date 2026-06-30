@@ -132,7 +132,8 @@
 
 .color-option.active {
     transform: scale(1.1);
-    box-shadow: 0 0 0 2px var(--primary);
+    box-shadow: 0 0 0 2px #111827;
+    border: 2px solid #ffffff;
 }
 
 .color-option.navy { background: #1e40af; }
@@ -140,3 +141,5 @@
 .color-option.crimson { background: #be123c; }
 .color-option.sunset { background: #d97706; }
 .color-option.purple { background: #7e22ce; }
+.color-option.charcoal { background: #111827; }
+.color-option.gold { background: #fbbf24; }

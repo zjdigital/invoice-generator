@@ -24,18 +24,24 @@ function collectInvoiceItems() {
 }
 
 function getActiveColorName() {
-    const activeBtn = document.querySelector(".color-option.active");
-    if (!activeBtn) return "Classic Navy (Biru)";
+    const activeBtns = document.querySelectorAll(".color-option.active");
+    if (activeBtns.length === 0) return "Classic Navy (Biru)";
     
-    const color = activeBtn.dataset.color;
-    switch(color) {
-        case "navy": return "Classic Navy (Biru)";
-        case "emerald": return "Emerald Green (Hijau)";
-        case "crimson": return "Crimson Velvet (Merah/Emas)";
-        case "sunset": return "Sunset Orange (Jingga)";
-        case "purple": return "Royal Purple (Ungu)";
-        default: return "Classic Navy (Biru)";
-    }
+    const names = Array.from(activeBtns).map(btn => {
+        const color = btn.dataset.color;
+        switch(color) {
+            case "navy": return "Navy Blue (Biru)";
+            case "emerald": return "Emerald Green (Hijau)";
+            case "crimson": return "Crimson Red (Merah)";
+            case "sunset": return "Sunset Orange (Jingga)";
+            case "purple": return "Royal Purple (Ungu)";
+            case "charcoal": return "Charcoal Black (Hitam)";
+            case "gold": return "Amber Gold (Kuning Emas)";
+            default: return color;
+        }
+    });
+    
+    return `Kombinasi ${names.join(" & ")}`;
 }
 
 function buildPrompt() {
@@ -148,9 +154,10 @@ Bagian Bawah (Footer):
 ${bankSection}
 - Catatan / Notes Syarat & Ketentuan Pembelian
 - Area Tanda Tangan (3 Kolom Sejajar Horizontal):
-  1. Kolom PEMBELI (kiri) — Tanda tangan tanda terima barang
-  2. Kolom ADMIN (tengah) — Tanda tangan admin/penjual
-  3. Kolom STEMPEL PERUSAHAAN (kanan) — Cap resmi logo perusahaan
+  1. Kolom PEMBELI (kiri) — Tanda tangan tanda terima barang.
+     PENTING: Kolom tanda tangan Pembeli HARUS KOSONG / BLANK (hanya berupa garis kosong untuk tanda tangan manual nanti: "( ________________________ )"). Jangan sekali-kali menggambar coretan tanda tangan palsu di sini.
+  2. Kolom ADMIN (tengah) — Tanda tangan admin/penjual.
+  3. Kolom STEMPEL PERUSAHAAN (kanan) — Cap resmi logo perusahaan.
 - Footer teks penutup di bagian paling bawah.
 
 Gaya Artistik:
